@@ -31,8 +31,7 @@ public class ProdutoRepository {
 	}
 
 	public List<ProdutoModel> findAll() {
-		List<ProdutoModel> produtos = this.jdbcTemplate.query(GET_ALL,
-				new ProdutoRowMapper());
+		List<ProdutoModel> produtos = this.jdbcTemplate.query(GET_ALL, new ProdutoRowMapper());
 		return produtos;
 	}
 
@@ -43,12 +42,14 @@ public class ProdutoRepository {
 
 	public void save(ProdutoModel produtoModel) {
 		jdbcTemplate.update(SAVE, produtoModel.getNome(), produtoModel.getSku(), produtoModel.getDescricao(),
-				produtoModel.getPreco(), produtoModel.getCaracteristicas(), produtoModel.getCategoriaModel().getIdCategoria());
+				produtoModel.getPreco(), produtoModel.getCaracteristicas(),
+				produtoModel.getCategoriaModel().getIdCategoria());
 	}
 
 	public void update(ProdutoModel produtoModel) {
 		jdbcTemplate.update(UPDATE, produtoModel.getNome(), produtoModel.getSku(), produtoModel.getDescricao(),
-				produtoModel.getPreco(), produtoModel.getCaracteristicas(), produtoModel.getCategoriaModel().getIdCategoria(), produtoModel.getId());
+				produtoModel.getPreco(), produtoModel.getCaracteristicas(),
+				produtoModel.getCategoriaModel().getIdCategoria(), produtoModel.getId());
 	}
 
 	public void deleteById(long id) {
