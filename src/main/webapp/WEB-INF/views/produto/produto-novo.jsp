@@ -70,7 +70,19 @@
 										<form:options items="${categoriaModel}"
 											itemValue="idCategoria" itemLabel="nomeCategoria" />
 									</form:select>
-									<font color="red"> <form:errors path="categoriaModel.idCategoria" />
+									<font color="red"> <form:errors
+											path="categoriaModel.idCategoria" />
+									</font>
+								</div>
+								<div class="form-group">
+									<label class="control-label" for="marca">Marca:</label>
+									<form:select path="marcaModel.idMarca" class="form-select"
+										name="marcaModel.idMarca" id="idMarca">
+										<form:options items="${marcaModel}" itemValue="idMarca"
+											itemLabel="nomeMarca" />
+									</form:select>
+									<font color="red"> <form:errors
+											path="marcaModel.idMarca" />
 									</font>
 								</div>
 								<div class="form-group">

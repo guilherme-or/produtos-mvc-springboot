@@ -15,8 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.fiap.model.ProdutoModel;
-import br.com.fiap.repository.CategoriaRepository;
 import br.com.fiap.repository.ProdutoRepository;
+import br.com.fiap.repository.CategoriaRepository;
+import br.com.fiap.repository.MarcaRepository;
 import jakarta.validation.Valid;
 
 @Controller
@@ -31,6 +32,9 @@ public class ProdutoController {
 	@Autowired
 	public CategoriaRepository categoriaRepository;
 
+	@Autowired
+	public MarcaRepository marcaRepository;
+	
 	@GetMapping()
 	public String findAll(Model model) {
 		model.addAttribute("produtos", produtoRepository.findAll());
@@ -45,6 +49,7 @@ public class ProdutoController {
 		}
 		
 		model.addAttribute("categoriaModel", categoriaRepository.findAll());
+		model.addAttribute("marcaModel", marcaRepository.findAll());
 		
 		return PRODUTO_FOLDER + page;
 	}
@@ -57,8 +62,10 @@ public class ProdutoController {
 
 	@PostMapping()
 	public String save(@Valid ProdutoModel produto, BindingResult bindingResult,
-			RedirectAttributes redirectAttributes) {
+			RedirectAttributes redirectAttributes, Model model) {
 		if (bindingResult.hasErrors()) {
+			model.addAttribute("categoriaModel", categoriaRepository.findAll());
+			model.addAttribute("marcaModel", marcaRepository.findAll());
 			return PRODUTO_FOLDER + "produto-novo";
 		}
 
@@ -69,8 +76,10 @@ public class ProdutoController {
 
 	@PutMapping("/update/{id}")
 	public String update(@PathVariable("id") long id, @Valid ProdutoModel produto, BindingResult bindingResult,
-			RedirectAttributes redirectAttributes) {
+			RedirectAttributes redirectAttributes, Model model) {
 		if (bindingResult.hasErrors()) {
+			model.addAttribute("categoriaModel", categoriaRepository.findAll());
+			model.addAttribute("marcaModel", marcaRepository.findAll());
 			return PRODUTO_FOLDER + "produto-editar";
 		}
 

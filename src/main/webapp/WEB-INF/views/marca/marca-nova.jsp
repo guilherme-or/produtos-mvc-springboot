@@ -7,8 +7,8 @@
 <html>
 
 <head>
-<meta charset="UTF-8">
-<title>Categorias</title>
+<meta charset="ISO-8859-1">
+<title>Marcas</title>
 
 <!-- ATALHO PARA TRAZER A URL DE CONTEXTO DO PROJETO -->
 <c:set value="${pageContext.request.contextPath}" var="contextPath" />
@@ -27,48 +27,56 @@
 
 <!-- LINKS PARA USAR FONTE CUSTOMIZAVEL DO GOOGLE FONTES -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
 	href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
 	rel="stylesheet">
 
 </head>
-
 <body>
 	<header>
 		<%@include file="../navbar/navbar.html"%>
 	</header>
 
-	<main class="container">
-		<h2 class="fonte-titulo text-danger my-4">Categoria</h2>
-		<form:form modelAttribute="categoriaModel"
-			action="${contextPath}/categoria/update/${categoriaModel.idCategoria}" method="put"
-			class="form">
+	<main>
+		<section id="formulario" class="bg-light pb-5">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="well">
 
-			<spring:hasBindErrors name="categoriaModel">
-				<div class="alert alert-danger" role="alert">
-					<form:errors path="*" class="has-error" />
+							<h2 class="fonte-titulo texto-cor-especial">Marca</h2>
+
+							<form:form modelAttribute="marcaModel" action="${contextPath}/marca" method="post">
+								<spring:hasBindErrors name="marcaModel">
+									<div class="alert alert-danger" role="alert">
+										<form:errors path="*" class="has-error" />
+									</div>
+								</spring:hasBindErrors>
+
+								<div class="form-group">
+									<label class="control-label" for="nomeMarca">Nome:</label>
+									<form:input path="nomeMarca" type="text" name="nomeMarca" id="nomeMarca"
+										value="" class="form-control" maxlength="50" size="50" />
+									<font color="red"> <form:errors path="nomeMarca" />
+									</font>
+								</div>
+								
+								<hr>
+
+								<a class="btn btn-secondary btn-sm"
+									href="${contextPath}/marca">Cancelar</a>
+								<button type="submit" class="btn btn-primary btn-sm">Gravar</button>
+							</form:form>
+						</div>
+					</div>
 				</div>
-			</spring:hasBindErrors>
-
-			<div class="form-group">
-				<form:input path="idCategoria" type="hidden" name="idCategoria" />
 			</div>
-
-			<div class="form-group">
-				<label class="control-label" for="nomeCategoria">Nome</label>
-				<form:input path="nomeCategoria" class="form-control" type="text" name="nomeCategoria"
-					id="nomeCategoria" />
-				<font color="red"> <form:errors path="nomeCategoria" /></font>
-			</div>
-		
-			<hr>
-			<a class="btn btn-secondary" href="${contextPath}/categoria">Cancelar</a>
-			<button class="btn btn-primary" type="submit">Salvar</button>
-		</form:form>
+		</section>
 	</main>
+
 	<script src="${jquery}/jquery.min.js"></script>
 	<script src="${js}/bootstrap.min.js"></script>
-</body>
 
+</body>
 </html>

@@ -40,10 +40,10 @@
 	</header>
 
 	<main class="container">
-		<h2 class="fonte-titulo text-danger">Produto</h2>
+		<h2 class="fonte-titulo text-danger my-4">Produto</h2>
 		<form:form modelAttribute="produtoModel"
-			action="${contextPath}/produto/update/${produtoModel.id}" method="put"
-			class="form">
+			action="${contextPath}/produto/update/${produtoModel.id}"
+			method="put" class="form">
 
 			<spring:hasBindErrors name="produtoModel">
 				<div class="alert alert-danger" role="alert">
@@ -63,11 +63,23 @@
 			</div>
 			<div class="form-group">
 				<label class="control-label" for="idCategoria">Categoria</label>
-				<form:select path="categoriaModel.idCategoria" class="form-select" name="categoriaModel.idCategoria"
-					id="idCategoria">
-					<form:options items="${categoriaModel}" itemValue="idCategoria" itemLabel="nomeCategoria"/>
+				<form:select path="categoriaModel.idCategoria" class="form-select"
+					name="categoriaModel.idCategoria" id="idCategoria">
+					<form:options items="${categoriaModel}" itemValue="idCategoria"
+						itemLabel="nomeCategoria" />
 				</form:select>
-				<font color="red"> <form:errors path="categoriaModel.idCategoria" />
+				<font color="red"> <form:errors
+						path="categoriaModel.idCategoria" />
+				</font>
+			</div>
+			<div class="form-group">
+				<label class="control-label" for="idMarca">Marca</label>
+				<form:select path="marcaModel.idMarca" class="form-select"
+					name="marcaModel.idMarca" id="idMarca">
+					<form:options items="${marcaModel}" itemValue="idMarca"
+						itemLabel="nomeMarca" />
+				</form:select>
+				<font color="red"> <form:errors path="marcaModel.idMarca" />
 				</font>
 			</div>
 			<div class="form-group">
@@ -86,7 +98,7 @@
 			<div class="form-group">
 				<label class="control-label" for="preco">Preço</label>
 				<form:input path="preco" class="form-control" type="number"
-					name="preco" id="preco" step=".01"/>
+					name="preco" id="preco" step=".01" />
 				<font color="red"><form:errors path="preco" /></font>
 			</div>
 			<div class="form-group">

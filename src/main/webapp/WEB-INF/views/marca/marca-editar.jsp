@@ -8,7 +8,7 @@
 
 <head>
 <meta charset="UTF-8">
-<title>Categorias</title>
+<title>Marcas</title>
 
 <!-- ATALHO PARA TRAZER A URL DE CONTEXTO DO PROJETO -->
 <c:set value="${pageContext.request.contextPath}" var="contextPath" />
@@ -40,30 +40,30 @@
 	</header>
 
 	<main class="container">
-		<h2 class="fonte-titulo text-danger my-4">Categoria</h2>
-		<form:form modelAttribute="categoriaModel"
-			action="${contextPath}/categoria/update/${categoriaModel.idCategoria}" method="put"
+		<h2 class="fonte-titulo text-danger my-4">Marca</h2>
+		<form:form modelAttribute="marcaModel"
+			action="${contextPath}/marca/update/${marcaModel.idMarca}" method="put"
 			class="form">
 
-			<spring:hasBindErrors name="categoriaModel">
+			<spring:hasBindErrors name="marcaModel">
 				<div class="alert alert-danger" role="alert">
 					<form:errors path="*" class="has-error" />
 				</div>
 			</spring:hasBindErrors>
 
 			<div class="form-group">
-				<form:input path="idCategoria" type="hidden" name="idCategoria" />
+				<form:input path="idMarca" type="hidden" name="idMarca" />
 			</div>
 
 			<div class="form-group">
-				<label class="control-label" for="nomeCategoria">Nome</label>
-				<form:input path="nomeCategoria" class="form-control" type="text" name="nomeCategoria"
-					id="nomeCategoria" />
-				<font color="red"> <form:errors path="nomeCategoria" /></font>
+				<label class="control-label" for="nomeMarca">Nome</label>
+				<form:input path="nomeMarca" class="form-control" type="text" name="nomeMarca"
+					id="nomeMarca" />
+				<font color="red"> <form:errors path="nomeMarca" /></font>
 			</div>
 		
 			<hr>
-			<a class="btn btn-secondary" href="${contextPath}/categoria">Cancelar</a>
+			<a class="btn btn-secondary" href="${contextPath}/marca">Cancelar</a>
 			<button class="btn btn-primary" type="submit">Salvar</button>
 		</form:form>
 	</main>

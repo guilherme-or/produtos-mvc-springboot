@@ -13,9 +13,9 @@ import br.com.fiap.model.CategoriaModel;
 @Repository
 public class CategoriaRepository {
 
-	private static final String GET_ALL = "SELECT * FROM tb_categoria";
+	private static final String GET_ALL = "SELECT id_categoria, nome_categoria FROM tb_categoria ORDER BY nome_categoria";
 	private static final String SAVE = "INSERT INTO tb_categoria (nome_categoria) VALUES (?)";
-	private static final String GET = "SELECT * FROM tb_categoria WHERE id_categoria = ?";
+	private static final String GET = "SELECT id_categoria, nome_categoria FROM tb_categoria WHERE id_categoria = ?";
 	private static final String UPDATE = "UPDATE tb_categoria SET nome_categoria = ?" + " WHERE id_categoria = ?";
 	private static final String DELETE = "DELETE FROM tb_categoria WHERE id_categoria = ?";
 

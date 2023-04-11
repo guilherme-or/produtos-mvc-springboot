@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Produtos</title>
+<title>Marcas</title>
 
 <!-- ATALHO PARA TRAZER A URL DE CONTEXTO DO PROJETO -->
 <c:set value="${pageContext.request.contextPath}" var="contextPath" />
@@ -43,9 +43,9 @@
 			<div>
 				<div class="row">
 					<div class="col-md-12">
-						<h2 class="fonte-titulo texto-cor-especial my-4">Produtos</h2>
+						<h2 class="fonte-titulo texto-cor-especial my-4">Marcas</h2>
 						<a class="btn btn-secondary mb-4"
-							href="${contextPath}/produto/form?page=produto-novo">Novo Produto</a>
+							href="${contextPath}/marca/form?page=marca-nova">Nova Marca</a>
 						<c:if test="${not empty messages}">
 							<h3 class="alert alert-warning">${messages}</h3>
 						</c:if>
@@ -59,25 +59,19 @@
 				<thead>
 					<tr>
 						<th scope="col">Nome</th>
-						<th scope="col">Categoria</th>
-						<th scope="col">Marca</th>
-						<th scope="col">Preço</th>
 						<th scope="col">Ações</th>
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${produtos}" var="produto">
+					<c:forEach items="${marcas}" var="marca">
 						<tr>
-							<td>${produto.nome}</td>
-							<td>${produto.categoriaModel.nomeCategoria}</td>
-							<td>${produto.marcaModel.nomeMarca}</td>
-							<td>${produto.preco}</td>
+							<td>${marca.nomeMarca}</td>
 							<td>
-								<form:form action="${contextPath}/produto/${produto.id}" 
+								<form:form action="${contextPath}/marca/${marca.idMarca}" 
 									method="delete">
-									<a href="${contextPath}/produto/${produto.id}"
+									<a href="${contextPath}/marca/${marca.idMarca}"
 										class="btn btn-success btn-sm">Detalhes</a> <a
-										href="${contextPath}/produto/form?page=produto-editar&id=${produto.id}"
+										href="${contextPath}/marca/form?page=marca-editar&id=${marca.idMarca}"
 										class="btn btn-warning btn-sm">Editar</a>
 									<button type="submit" class="btn btn-danger btn-sm">Excluir</button>
 								</form:form>
