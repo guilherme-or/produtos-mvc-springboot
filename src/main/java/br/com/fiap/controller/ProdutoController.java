@@ -81,8 +81,8 @@ public class ProdutoController {
 		produtoRepository.update(produto);
 		
 		redirectAttributes.addFlashAttribute("messages", "Produto atualizado com sucesso!");
-		model.addAttribute("categoriaModel", categoriaRepository.findAll());
-		model.addAttribute("marcaModel", marcaRepository.findAll());
+		model.addAttribute("produtos", produtoRepository.findAll());
+		
 		return "redirect:/produto";
 	}
 	
