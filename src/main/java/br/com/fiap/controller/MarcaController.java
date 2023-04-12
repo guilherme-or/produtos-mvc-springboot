@@ -61,16 +61,15 @@ public class MarcaController {
 		return "redirect:/marca";
 	}
 
-	@PutMapping("/update/{id}")
-	public String update(@PathVariable("id") long id, @Valid MarcaModel marca, BindingResult bindingResult,
+	@PutMapping("/{id}")
+	public String update(@PathVariable("id") long id, Model model, @Valid MarcaModel marca, BindingResult bindingResult,
 			RedirectAttributes redirectAttributes) {
-		if (bindingResult.hasErrors()) {
-			return MARCA_FOLDER + "marca-editar";
-		}
-
 		marca.setIdMarca(id);
 		repository.update(marca);
+
 		redirectAttributes.addFlashAttribute("messages", "Marca atualizada com sucesso!");
+		model.addAttribute("marcas", repository.findAll());
+		
 		return "redirect:/marca";
 	}
 

@@ -61,16 +61,15 @@ public class CategoriaController {
 		return "redirect:/categoria";
 	}
 
-	@PutMapping("/update/{id}")
-	public String update(@PathVariable("id") long id, @Valid CategoriaModel categoria, BindingResult bindingResult,
-			RedirectAttributes redirectAttributes) {
-		if (bindingResult.hasErrors()) {
-			return CATEGORIA_FOLDER + "categoria-editar";
-		}
-
+	@PutMapping("/{id}")
+	public String update(@PathVariable("id") long id, Model model, @Valid CategoriaModel categoria,
+			BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 		categoria.setIdCategoria(id);
 		repository.update(categoria);
+
 		redirectAttributes.addFlashAttribute("messages", "Categoria atualizada com sucesso!");
+		model.addAttribute("categorias", repository.findAll());
+		
 		return "redirect:/categoria";
 	}
 

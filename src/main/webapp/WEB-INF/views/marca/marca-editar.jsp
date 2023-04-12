@@ -7,7 +7,7 @@
 <html>
 
 <head>
-<meta charset="UTF-8">
+<meta charset="ISO-8859-1">
 <title>Marcas</title>
 
 <!-- ATALHO PARA TRAZER A URL DE CONTEXTO DO PROJETO -->
@@ -42,7 +42,7 @@
 	<main class="container">
 		<h2 class="fonte-titulo text-danger my-4">Marca</h2>
 		<form:form modelAttribute="marcaModel"
-			action="${contextPath}/marca/update/${marcaModel.idMarca}" method="put"
+			action="${contextPath}/marca/${marcaModel.idMarca}" method="put"
 			class="form">
 
 			<spring:hasBindErrors name="marcaModel">
@@ -58,7 +58,7 @@
 			<div class="form-group">
 				<label class="control-label" for="nomeMarca">Nome</label>
 				<form:input path="nomeMarca" class="form-control" type="text" name="nomeMarca"
-					id="nomeMarca" />
+					id="nomeMarca" maxlength="50" size="50"/>
 				<font color="red"> <form:errors path="nomeMarca" /></font>
 			</div>
 		

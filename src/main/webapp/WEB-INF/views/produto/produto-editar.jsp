@@ -42,7 +42,7 @@
 	<main class="container">
 		<h2 class="fonte-titulo text-danger my-4">Produto</h2>
 		<form:form modelAttribute="produtoModel"
-			action="${contextPath}/produto/update/${produtoModel.id}"
+			action="${contextPath}/produto/${produtoModel.id}"
 			method="put" class="form">
 
 			<spring:hasBindErrors name="produtoModel">

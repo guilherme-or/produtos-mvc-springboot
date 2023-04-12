@@ -42,7 +42,7 @@
 	<main class="container">
 		<h2 class="fonte-titulo text-danger my-4">Categoria</h2>
 		<form:form modelAttribute="categoriaModel"
-			action="${contextPath}/categoria/update/${categoriaModel.idCategoria}" method="put"
+			action="${contextPath}/categoria/${categoriaModel.idCategoria}" method="put"
 			class="form">
 
 			<spring:hasBindErrors name="categoriaModel">

@@ -74,21 +74,18 @@ public class ProdutoController {
 		return "redirect:/produto";
 	}
 
-	@PutMapping("/update/{id}")
-	public String update(@PathVariable("id") long id, @Valid ProdutoModel produto, BindingResult bindingResult,
-			RedirectAttributes redirectAttributes, Model model) {
-		if (bindingResult.hasErrors()) {
-			model.addAttribute("categoriaModel", categoriaRepository.findAll());
-			model.addAttribute("marcaModel", marcaRepository.findAll());
-			return PRODUTO_FOLDER + "produto-editar";
-		}
-
+	@PutMapping("/{id}")
+	public String update(@PathVariable("id") long id, Model model, @Valid ProdutoModel produto, BindingResult bindingResult,
+			RedirectAttributes redirectAttributes) {
 		produto.setId(id);
 		produtoRepository.update(produto);
+		
 		redirectAttributes.addFlashAttribute("messages", "Produto atualizado com sucesso!");
+		model.addAttribute("categoriaModel", categoriaRepository.findAll());
+		model.addAttribute("marcaModel", marcaRepository.findAll());
 		return "redirect:/produto";
 	}
-
+	
 	@DeleteMapping("/{id}")
 	public String delete(@PathVariable("id") long id, RedirectAttributes redirectAttributes) {
 		produtoRepository.deleteById(id);

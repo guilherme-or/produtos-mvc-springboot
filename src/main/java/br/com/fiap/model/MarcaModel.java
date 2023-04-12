@@ -7,14 +7,14 @@ public class MarcaModel {
 	private long idMarca;
 	private String nomeMarca;
 
-	public MarcaModel() {
-		super();
-	}
-
 	public MarcaModel(long idMarca, String nomeMarca) {
 		super();
 		this.idMarca = idMarca;
 		this.nomeMarca = nomeMarca;
+	}
+	
+	public MarcaModel() {
+		super();
 	}
 
 	public long getIdMarca() {
